@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolBox Pro - 免费在线工具箱</title>
+  <meta name="description" content="免费在线工具箱，提供JSON格式化、Base64编解码、正则测试、密码生成、二维码生成等20+实用工具。">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <a href="#" class="logo" onclick="navigate('home')">
+        <span class="logo-icon">&#x1F527;</span>
+        <span class="logo-text">ToolBox<span class="logo-pro">Pro</span></span>
+      </a>
+      <nav class="nav">
+        <a href="#" onclick="navigate('home')" class="nav-link active" data-nav="home">首页</a>
+        <a href="#" onclick="navigate('dev')" class="nav-link" data-nav="dev">开发者</a>
+        <a href="#" onclick="navigate('text')" class="nav-link" data-nav="text">文本</a>
+        <a href="#" onclick="navigate('image')" class="nav-link" data-nav="image">图片</a>
+        <a href="#" onclick="navigate('life')" class="nav-link" data-nav="life">生活</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-premium" onclick="showPremium()">升级 Pro</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Home Page -->
+    <div id="page-home" class="page active">
+      <section class="hero">
+        <div class="container">
+          <h1>你的全能在线工具箱</h1>
+          <p>20+ 免费工具，无需安装，即开即用</p>
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="搜索工具..." oninput="filterTools(this.value)">
+            <span class="search-icon">&#x1F50D;</span>
+          </div>
+        </div>
+      </section>
+      <div class="container">
+        <!-- Ad Slot 1 -->
+        <div class="ad-slot" id="ad-top">
+          <span class="ad-label">广告位</span>
+        </div>
+
+        <section class="tool-grid" id="allTools">
+          <!-- Tools will be injected by JS -->
+        </section>
+      </div>
+    </div>
+
+    <!-- Category Pages -->
+    <div id="page-dev" class="page">
+      <div class="container">
+        <h2 class="page-title">开发者工具</h2>
+        <section class="tool-grid" id="devTools"></section>
+      </div>
+    </div>
+    <div id="page-text" class="page">
+      <div class="container">
+        <h2 class="page-title">文本工具</h2>
+        <section class="tool-grid" id="textTools"></section>
+      </div>
+    </div>
+    <div id="page-image" class="page">
+      <div class="container">
+        <h2 class="page-title">图片工具</h2>
+        <section class="tool-grid" id="imageTools"></section>
+      </div>
+    </div>
+    <div id="page-life" class="page">
+      <div class="container">
+        <h2 class="page-title">生活工具</h2>
+        <section class="tool-grid" id="lifeTools"></section>
+      </div>
+    </div>
+
+    <!-- Tool Pages (SPA) -->
+    <div id="page-tool" class="page">
+      <div class="container">
+        <button class="btn-back" onclick="navigate('home')">&larr; 返回工具箱</button>
+        <div id="toolContent" class="tool-workspace"></div>
+        <!-- Ad Slot 2 -->
+        <div class="ad-slot" id="ad-bottom">
+          <span class="ad-label">广告位</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Premium Modal -->
+  <div class="modal-overlay" id="premiumModal" onclick="closePremium(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="document.getElementById('premiumModal').classList.remove('active')">&times;</button>
+      <h2>升级 ToolBox Pro</h2>
+      <p class="modal-subtitle">解锁全部高级功能，去除广告</p>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>月度</h3>
+          <div class="price">&yen;9.9<span>/月</span></div>
+          <ul>
+            <li>去除所有广告</li>
+            <li>无限次使用高级工具</li>
+            <li>优先支持</li>
+          </ul>
+          <button class="btn-primary" onclick="handlePay('monthly')">立即订阅</button>
+        </div>
+        <div class="pricing-card featured">
+          <div class="badge">最划算</div>
+          <h3>年度</h3>
+          <div class="price">&yen;59.9<span>/年</span></div>
+          <ul>
+            <li>所有月度权益</li>
+            <li>节省 50%</li>
+            <li>终身免费更新</li>
+          </ul>
+          <button class="btn-primary" onclick="handlePay('yearly')">立即订阅</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 ToolBox Pro. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/tools.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
